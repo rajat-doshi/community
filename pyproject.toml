@@ -10,5 +10,18 @@ dependencies = [
     "sqlalchemy>=2.0.52",
     "uvicorn>=0.52.4",
 ]
+
 [tool.uv.workspace]
 members = ["apps/*", "packages/*"]
+
+[tool.poe.tasks]
+start = "uv run uvicorn apps.family_api.main:app --reload --port 8001"
+db = "uv run python packages/database/src/my_database/main.py"
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F"]
+ignore = ["E501"]
+

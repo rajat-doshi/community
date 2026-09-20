@@ -1,6 +1,6 @@
-from sqlalchemy import Column, Integer, String, Boolean, JSON, ForeignKey
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship, mapped_column
-from db.database import Base
+from sqlalchemy import Column,  Boolean, JSON, ForeignKey
+from sqlalchemy.orm import  Mapped, mapped_column, mapped_column
+from my_database.db import Base
 
 class Family(Base):
     """

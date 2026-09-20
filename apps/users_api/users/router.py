@@ -1,11 +1,10 @@
 from fastapi import APIRouter,Depends
 from sqlalchemy.orm import Session
 from apps.users_api.users.model import model_fetch_users_list, model_create_user_list
-from shared_core.db.database import get_db
+from my_database.db import get_db
 from apps.users_api.users.type import Type_UserList, Type_User
 from apps.users_api.utils.utils import TYPE_SUCCESS_RESPONSE, TYPE_ERROR_RESPONSE
 user_router = APIRouter(prefix="/users", tags=["Users"])
-from shared_core.test import test
 
 @user_router.get("/users")
 def get_users(db: Session = Depends(get_db)):

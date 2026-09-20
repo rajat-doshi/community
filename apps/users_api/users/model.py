@@ -1,8 +1,7 @@
 from sqlalchemy import text
 from sqlalchemy.exc import IntegrityError
-from shared_core.db.database import get_db
 from sqlalchemy.orm import Session
-from apps.users_api.db.model.user_model import User
+from my_database.model.users.main import User
 from apps.users_api.users.type import Type_UserList, Type_User
 from apps.users_api.utils.utils import TYPE_SUCCESS_RESPONSE, TYPE_ERROR_RESPONSE, SUCCESS_RESPONSE, ERROR_RESPONSE
 from typing import List

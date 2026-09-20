@@ -1,6 +1,6 @@
 from pydantic import BaseModel, ConfigDict, TypeAdapter
-from typing import List, Union
 from typing import List
+
 
 class Type_User(BaseModel):
     first_name: str
@@ -10,5 +10,6 @@ class Type_User(BaseModel):
     is_active: int
 
     model_config = ConfigDict(from_attributes=True)
+
 
 Type_UserList = TypeAdapter(List[Type_User])

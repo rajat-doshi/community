@@ -6,15 +6,9 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-ROOT_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(ROOT_DIR / ".env")
-
+load_dotenv(".env")
 
 def get_database_url() -> str:
-    db_url = os.getenv("SQLALCHEMY_DATABASE_URL")
-    if db_url:
-        return db_url
-
     dialect = os.getenv("DB_DIALECT", "mysql").lower()
     db_name = os.getenv("DB_NAME", "community")
     if dialect == "sqlite":

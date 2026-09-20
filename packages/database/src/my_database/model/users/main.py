@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
-from shared_core.db.database import Base
+from my_database.db import Base
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 from pydantic import BaseModel, ConfigDict
 
