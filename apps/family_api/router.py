@@ -11,8 +11,8 @@ router = APIRouter(prefix="/family", tags=["Family"])
 
 
 @router.get(
-    "/fetch-users-list",
+    "/fetch-family-list",
     response_model=TYPE_SUCCESS_RESPONSE[Type_Family_List] | TYPE_ERROR_RESPONSE[str],
 )
-def fetch_users_list(db: Session = Depends(get_db)):
+def fetch_family_list(db: Session = Depends(get_db)):
     return fetch_family_users_list(db)

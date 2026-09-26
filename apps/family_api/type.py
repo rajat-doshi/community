@@ -1,5 +1,5 @@
 from typing import List
-from pydantic import BaseModel, ConfigDict, TypeAdapter
+from pydantic import BaseModel, ConfigDict
 
 
 class Type_Single_Family(BaseModel):
@@ -7,5 +7,4 @@ class Type_Single_Family(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
-# 1. Create the TypeAdapter for a list of your models
-Type_Family_List = TypeAdapter(List[Type_Single_Family])
+Type_Family_List = List[Type_Single_Family]
