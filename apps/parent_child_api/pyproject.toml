@@ -1,12 +1,7 @@
 [project]
-name = "users_api"
+name = "parent-child-api"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.14"
-dependencies = [
-    "shared-core",
-]
-
-[tool.uv.sources]
-shared-core = { workspace = true }
+dependencies = []

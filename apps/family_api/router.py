@@ -1,18 +1,19 @@
 from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
 from my_database.db import get_db
+from sqlalchemy.orm import Session
+from apps.family_api.model import create_family_model, fetch_family_list_model
 
-from apps.family_api.type import Type_Family_List
-from apps.users_api.utils.utils import TYPE_SUCCESS_RESPONSE, TYPE_ERROR_RESPONSE
-from apps.family_api.model.main import fetch_family_users_list
-
-
-router = APIRouter(prefix="/family", tags=["Family"])
-
-
-@router.get(
-    "/fetch-family-list",
-    response_model=TYPE_SUCCESS_RESPONSE[Type_Family_List] | TYPE_ERROR_RESPONSE[str],
+router = APIRouter(
+    prefix="/family",
+    tags=["family"],
 )
-def fetch_family_list(db: Session = Depends(get_db)):
-    return fetch_family_users_list(db)
+
+
+@router.get("/fetch-family-list")
+async def fetch_family_list(db: Session = Depends(get_db)):
+    return fetch_family_list_model(db)
+
+
+@router.post("/create-family")
+async def create_family(family_data: dict, db: Session = Depends(get_db)):
+    return create_family_model(db, family_data)
