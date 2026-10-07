@@ -12,5 +12,13 @@
   "ruff.lint.args": [
     "--select",
     "E,F"
-  ]
+  ],
+  "emeraldwalk.runonsave": {
+    "commands": [
+        {
+            "match": "\\.ipynb$",
+            "cmd": "jupyter nbconvert --to script \"${file}\""
+        }
+    ]
+}
 }

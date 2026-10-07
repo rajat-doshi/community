@@ -8,6 +8,7 @@ from apps.members_api.model import (
     fetch_member_by_id_model,
     fetch_members_list,
     update_member_model,
+    llm_create_model,
 )
 from apps.members_api.type import MemberType
 from shared_core.utility.api_response import (
@@ -42,6 +43,11 @@ def update_member(member: MemberType, db: Session = Depends(get_db)):
 @router.get("/:id", response_model=TYPE_SUCCESS_RESPONSE[MemberType] | TYPE_ERROR_RESPONSE[str])
 async def read_member(id: int, db: Session = Depends(get_db)):
     return fetch_member_by_id_model(db, id)
+
+
+@router.post("/llm/create", response_model=TYPE_SUCCESS_RESPONSE[dict] | TYPE_ERROR_RESPONSE[str])
+async def llm_create(prompt: str, db: Session = Depends(get_db)):
+    return llm_create_model(prompt, db)
 
 
 @router.get("/health")

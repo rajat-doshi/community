@@ -3,6 +3,7 @@ from shared_core.utility.api_response import (
     SUCCESS_RESPONSE,
     ERROR_RESPONSE,
 )
+from shared_core.llm.main import llm_model
 
 
 def fetch_members_list(db):
@@ -51,3 +52,14 @@ def fetch_member_by_id_model(db, member_id):
     except Exception as e:
         print(f"Error fetching member: {e}")
         return ERROR_RESPONSE(str(e), "Error fetching member", 500)
+
+
+def llm_create_model(prompt: str, db):
+    try:
+        response = llm_model(prompt)
+        text = response.text
+        print(f"LLM response: {response.text}")
+        return SUCCESS_RESPONSE({"status": text}, "LLM created successfully", 201)
+    except Exception as e:
+        print(f"Error creating LLM: {e}")
+        return ERROR_RESPONSE(str(e), "Error creating LLM", 500)
